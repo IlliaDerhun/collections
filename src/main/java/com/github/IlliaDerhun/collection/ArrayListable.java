@@ -39,6 +39,9 @@ public class ArrayListable<T> implements Listable<T> {
 
     @Override
     public boolean contains(T element) {
+        if (element == null && size == 0) {
+            return false;
+        }
         if (element == null) {
             return indexOfNullElement() >= 0;
         }
@@ -47,7 +50,7 @@ public class ArrayListable<T> implements Listable<T> {
 
     @Override
     public int indexOfElement(T element) {
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (element.equals(array[i])) {
                 return i;
             }
@@ -56,7 +59,7 @@ public class ArrayListable<T> implements Listable<T> {
     }
 
     private int indexOfNullElement() {
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (array[i] == null) {
                 return i;
             }

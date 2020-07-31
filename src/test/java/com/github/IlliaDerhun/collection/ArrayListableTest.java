@@ -85,17 +85,26 @@ class ArrayListableTest {
     void containsShouldBeFalseForNullInEmptyArray() {
         boolean actualResponse = integers.contains(null);
 
-        assertThat(actualResponse, is(true));
+        assertThat(actualResponse, is(false));
     }
 
     @Test
-    void containsShouldBeFalseForArrayWithNullElementInside() {
+    void containsShouldBeTrueForArrayWithNullElementInside() {
         integers.add(1);
         integers.add(null);
         integers.add(2);
         boolean actualResponse = integers.contains(null);
 
         assertThat(actualResponse, is(true));
+    }
+
+    @Test
+    void containsShouldBeFalseForArrayWithNonNullElementInside() {
+        integers.add(1);
+        integers.add(2);
+        boolean actualResponse = integers.contains(null);
+
+        assertThat(actualResponse, is(false));
     }
 
     @Test
