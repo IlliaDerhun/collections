@@ -129,4 +129,30 @@ class ArrayListableTest {
 
         assertThat(actualIndex, is(-1));
     }
+
+    @Test
+    void getOrDefaultShouldReturnDefaultElementIfIndexIsLessThanSize() {
+        Integer defaultElement = 1234;
+        Integer actualResult = integers.getOrDefault(-1, defaultElement);
+
+        assertThat(actualResult, is(defaultElement));
+    }
+
+    @Test
+    void getOrDefaultShouldReturnDefaultElementIfIndexIsBiggerThanSize() {
+        Integer defaultElement = 1234;
+        Integer actualResult = integers.getOrDefault(5, defaultElement);
+
+        assertThat(actualResult, is(defaultElement));
+    }
+
+    @Test
+    void getOrDefaultShouldReturnExistingElementIfIndexIsExistInArray() {
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        Integer actualResult = integers.getOrDefault(1, 1234);
+
+        assertThat(actualResult, is(2));
+    }
 }

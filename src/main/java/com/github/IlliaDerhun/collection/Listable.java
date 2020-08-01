@@ -6,6 +6,8 @@ public interface Listable<T> {
 
     T get(int index);
 
+    T getOrDefault(int index, T defaultElement);
+
     int size();
 
     boolean isEmpty();

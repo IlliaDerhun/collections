@@ -130,4 +130,30 @@ class LinkedListableTest {
 
         assertThat(actualIndex, is(-1));
     }
+
+    @Test
+    void getOrDefaultShouldReturnDefaultElementIfIndexIsLessThanSize() {
+        Integer defaultElement = 1234;
+        Integer actualResult = linkedList.getOrDefault(-1, defaultElement);
+
+        assertThat(actualResult, is(defaultElement));
+    }
+
+    @Test
+    void getOrDefaultShouldReturnDefaultElementIfIndexIsBiggerThanSize() {
+        Integer defaultElement = 1234;
+        Integer actualResult = linkedList.getOrDefault(5, defaultElement);
+
+        assertThat(actualResult, is(defaultElement));
+    }
+
+    @Test
+    void getOrDefaultShouldReturnExistingElementIfIndexIsExistInArray() {
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        Integer actualResult = linkedList.getOrDefault(1, 1234);
+
+        assertThat(actualResult, is(2));
+    }
 }

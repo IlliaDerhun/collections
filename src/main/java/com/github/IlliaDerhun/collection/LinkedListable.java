@@ -40,6 +40,14 @@ public class LinkedListable<T> implements Listable<T> {
     }
 
     @Override
+    public T getOrDefault(int index, T defaultElement) {
+        if (index > size || index < 0) {
+            return defaultElement;
+        }
+        return get(index);
+    }
+
+    @Override
     public int size() {
         return this.size;
     }
